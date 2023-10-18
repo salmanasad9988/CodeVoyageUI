@@ -10,6 +10,7 @@
                 <tr>
                     <th>Title</th>
                     <th>Description</th>
+                    <th>Categories</th>
                     <th>Is Public</th>
                     <th>Actions</th>
                 </tr>
@@ -18,6 +19,11 @@
                 <tr *ngFor="let blogPost of blogPosts">
                     <td>{{blogPost.title}}</td>
                     <td>{{blogPost.description}}</td>
+                    <td>
+                        <span *ngFor="let category of blogPost.categories">
+                            <span class="ms-1 badge bg-primary">{{category.name}}</span>
+                        </span>
+                    </td>
                     <td>{{blogPost.isPublic}}</td>
                     <td></td>
                 </tr>
