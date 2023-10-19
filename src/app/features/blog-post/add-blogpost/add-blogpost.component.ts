@@ -1,21 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AddBlogPost } from '../models/add-blog-post.model';
 import { BlogPostService } from '../services/blog-post.service';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
+import { CategoryService } from '../../category/services/category.service';
+import { Category } from '../../category/models/category.model';
 
 @Component({
   selector: 'app-add-blogpost',
   templateUrl: './add-blogpost.component.html',
   styleUrls: ['./add-blogpost.component.css']
 })
-export class AddBlogpostComponent {
+export class AddBlogpostComponent implements OnInit {
   model: AddBlogPost;
   private addBlogPostSubscription?: Subscription;
+  categories$?: Observable<Category[]>;
 
   constructor(
     private blogPostService: BlogPostService,
-    private router: Router) {
+    private router: Router,
+    private categoryService: CategoryService) {
     this.model = {
       title: '',
       description: '',
@@ -23,8 +27,12 @@ export class AddBlogpostComponent {
       imageUrl: '',
       author: '',
       isPublic: true,
-      publishedDate: new Date()
+      publishedDate: new Date(),
+      categoryIds: []
     }
+  }
+  ngOnInit(): void {
+    this.categories$ = this.categoryService.getAllCategories();
   }
 
   onFormSubmit(): void {
