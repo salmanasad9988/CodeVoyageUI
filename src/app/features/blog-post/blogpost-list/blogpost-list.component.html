@@ -25,7 +25,9 @@
                         </span>
                     </td>
                     <td>{{blogPost.isPublic}}</td>
-                    <td></td>
+                    <td>
+                        <a class="btn btn-warning" [routerLink]="['/admin/blogposts/', blogPost.id]">Edit</a>
+                    </td>
                 </tr>
             </tbody>
         </table>
