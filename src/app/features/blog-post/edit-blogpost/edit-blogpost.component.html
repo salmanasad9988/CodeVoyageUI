@@ -29,6 +29,80 @@
                     [(ngModel)]="blogPost.description" />
                 </div>
                 
+                <div class="mt-3">
+                    <label for="content" class="form-label">Content</label>
+                    <textarea 
+                    name="content" 
+                    id="content" 
+                    cols="30" 
+                    rows="10" 
+                    class="form-control"
+                    [(ngModel)]="blogPost.content"
+                    ></textarea>
+                </div>
+    
+                <div class="mt-3">
+                    <label for="imageUrl" class="form-label">Image</label>
+                    <input 
+                    type="text" 
+                    id="imageUrl" 
+                    name="imageUrl" 
+                    class="form-control"
+                    [(ngModel)]="blogPost.imageUrl"
+                    >
+                </div>
+    
+                <div class="mt-3">
+                    <label for="publishedDate" class="form-label">Published Date</label>
+                    <input 
+                    type="date" 
+                    id="publishedDate" 
+                    name="publishedDate" 
+                    class="form-control"
+                    value="{{blogPost.publishedDate}}"
+                    [ngModel]="blogPost.publishedDate | date: 'yyy-MM-dd'"
+                    (ngModelChange)="blogPost.publishedDate = $event"
+                    >
+                </div>
+    
+                <div class="mt-3">
+                    <label for="author" class="form-label">Author</label>
+                    <input 
+                    type="text" 
+                    id="author" 
+                    name="author" 
+                    class="form-control"
+                    [(ngModel)]="blogPost.author"
+                    >
+                </div>
+    
+                <div class="form-check mt-3">
+                    <input 
+                    class="form-check-input" 
+                    type="checkbox" 
+                    id="isPublic"
+                    name="isPublic"
+                    [(ngModel)]="blogPost.isPublic"
+                    >
+                    <label class="form-check-label" for="flexCheckDefault">
+                        Is Public?
+                    </label>
+                </div>
+    
+                <!--<div class="mt-3">
+                    <label for="categories" class="form-label">Categories</label>
+                    <ng-container *ngIf="categories$ | async as categories">
+                        <select class="form-control" [(ngModel)]="model.categoryIds" name="categories" id="categories" multiple>
+                            <option *ngFor="let category of categories" [value]="category.id">
+                                {{category.name}}
+                            </option>
+                        </select>
+                    </ng-container>
+                </div>-->
+    
+                <div class="mt-3">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
 
             </div>
         </form>

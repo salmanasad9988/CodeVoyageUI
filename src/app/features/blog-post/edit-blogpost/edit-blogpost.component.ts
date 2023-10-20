@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BlogPostService } from '../services/blog-post.service';
@@ -9,7 +9,7 @@ import { BlogPost } from '../models/blog-post.model';
   templateUrl: './edit-blogpost.component.html',
   styleUrls: ['./edit-blogpost.component.css']
 })
-export class EditBlogpostComponent implements OnInit {
+export class EditBlogpostComponent implements OnInit, OnDestroy {
 
   id: string | null = null;
   paramsSubscription?: Subscription;
@@ -19,7 +19,7 @@ export class EditBlogpostComponent implements OnInit {
     private blogPostService: BlogPostService, 
     private router: Router)
   {}
-
+  
   ngOnInit(): void {
     this.paramsSubscription = this.route.paramMap.subscribe({
       next: (params) => {
@@ -35,6 +35,10 @@ export class EditBlogpostComponent implements OnInit {
         }
       }
     });
+  }
+
+  ngOnDestroy(): void {
+    this.paramsSubscription?.unsubscribe();
   }
 
 }
