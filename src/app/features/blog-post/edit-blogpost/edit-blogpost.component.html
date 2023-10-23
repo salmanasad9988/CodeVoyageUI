@@ -29,7 +29,7 @@
                     [(ngModel)]="blogPost.description" />
                 </div>
                 
-                <div class="mt-3">
+                <!-- <div class="mt-3">
                     <label for="content" class="form-label">Content</label>
                     <textarea 
                     name="content" 
@@ -39,8 +39,26 @@
                     class="form-control"
                     [(ngModel)]="blogPost.content"
                     ></textarea>
-                </div>
+                </div> -->
     
+                <div class="mt-3">
+                    <label for="content" class="form-label">Content</label>
+                    <div class="d-flex flex-row">
+                        <div class="col-6 p-2">
+                            <textarea 
+                                name="content" 
+                                id="content" 
+                                style="height:350px; max-height:350px"
+                                class="form-control"
+                                [(ngModel)]="blogPost.content"
+                            ></textarea>
+                        </div>
+                        <div class="col-6 p-2" style="max-height: 350px;overflow-y: scroll;">
+                            <markdown [data]="blogPost.content"></markdown>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="mt-3">
                     <label for="imageUrl" class="form-label">Image</label>
                     <input 
@@ -117,3 +135,5 @@
     </ng-template>
 
 </div>
+
+<app-image-selector></app-image-selector>
