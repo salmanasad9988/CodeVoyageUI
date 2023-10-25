@@ -62,6 +62,13 @@
                 <div class="mt-3">
                     <label for="imageUrl" class="form-label">Image</label>
                     <button type="button" class="btn btn-light" (click)="openImageSelector()">Select Image</button>
+                    
+                    <ng-container *ngIf="blogPost.imageUrl !== ''">
+                        <div>
+                          <img [src]="blogPost.imageUrl" [(ngModel)]="blogPost.imageUrl" height="100" class="my-2">
+                        </div>
+                    </ng-container>
+
                     <!-- <input 
                     type="text" 
                     id="imageUrl" 

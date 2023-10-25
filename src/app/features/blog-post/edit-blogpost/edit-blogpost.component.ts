@@ -6,6 +6,7 @@ import { BlogPost } from '../models/blog-post.model';
 import { CategoryService } from '../../category/services/category.service';
 import { Category } from '../../category/models/category.model';
 import { UpdateBlogPost } from '../models/update-blog-post.model';
+import { ImageService } from 'src/app/shared/services/image.service';
 
 @Component({
   selector: 'app-edit-blogpost',
@@ -19,6 +20,7 @@ export class EditBlogpostComponent implements OnInit, OnDestroy {
   getBlogPostSubscription?: Subscription;
   updateBlogPostSubscription?: Subscription;
   deleteBlogPostSubscription?: Subscription;
+  imageSelectSubscription?: Subscription;
   blogPost?: BlogPost;
   categories$?: Observable<Category[]>;
   selectedCategories?: string[];
@@ -27,6 +29,7 @@ export class EditBlogpostComponent implements OnInit, OnDestroy {
   constructor(private route: ActivatedRoute, 
     private blogPostService: BlogPostService, 
     private categoryService: CategoryService,
+    private imageService: ImageService,
     private router: Router)
   {}
   
@@ -47,6 +50,14 @@ export class EditBlogpostComponent implements OnInit, OnDestroy {
             }
           });
         }
+        this.imageSelectSubscription = this.imageService.onSelectImage().subscribe({
+          next: (response) => {
+            if(this.blogPost) {
+              this.blogPost.imageUrl = response.url;
+              this.isImageSelectorVisible = false;
+            }
+          }
+        })
       }
     });
   }
@@ -101,6 +112,7 @@ export class EditBlogpostComponent implements OnInit, OnDestroy {
     this.getBlogPostSubscription?.unsubscribe();
     this.updateBlogPostSubscription?.unsubscribe();
     this.deleteBlogPostSubscription?.unsubscribe();
+    this.imageSelectSubscription?.unsubscribe();
   }
 
 }
