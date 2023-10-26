@@ -14,6 +14,7 @@ import { AddBlogpostComponent } from './features/blog-post/add-blogpost/add-blog
 import { EditBlogpostComponent } from './features/blog-post/edit-blogpost/edit-blogpost.component';
 import { ImageSelectorComponent } from './shared/components/image-selector/image-selector.component';
 import { MarkdownModule } from 'ngx-markdown';
+import { HomeComponent } from './features/public/home/home.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { MarkdownModule } from 'ngx-markdown';
     BlogpostListComponent,
     AddBlogpostComponent,
     EditBlogpostComponent,
-    ImageSelectorComponent
+    ImageSelectorComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
