@@ -6,5 +6,6 @@ export interface UpdateBlogPost {
     author: string;
     publishedDate: Date;
     isPublic: boolean;
+    urlHandle: string;
     categoryIds: string[];
 }

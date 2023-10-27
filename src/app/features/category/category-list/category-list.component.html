@@ -9,6 +9,7 @@
                 <tr>
                     <th>Id</th>
                     <th>Category</th>
+                    <th>URL Handle</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -16,6 +17,7 @@
                 <tr *ngFor="let category of categories">
                     <td>{{category.id}}</td>
                     <td>{{category.name}}</td>
+                    <td>{{category.urlHandle}}</td>
                     <td>
                         <a class="btn btn-warning" [routerLink]="['/admin/categories/', category.id]">Edit</a>
                         <!--<a class="btn btn-danger" [routerLink]="['/admin/categories/', category.id]">Delete</a>-->

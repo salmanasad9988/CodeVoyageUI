@@ -6,5 +6,6 @@ export interface AddBlogPost {
     author: string;
     publishedDate: Date;
     isPublic: boolean;
+    urlHandle: string;
     categoryIds: string[];
 }

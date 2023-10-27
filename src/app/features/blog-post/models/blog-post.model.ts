@@ -9,5 +9,6 @@ export interface BlogPost {
     author: string;
     publishedDate: Date;
     isPublic: boolean;
+    urlHandle: string;
     categories: Category[];
 }
