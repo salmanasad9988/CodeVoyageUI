@@ -11,6 +11,7 @@
                     <th>Title</th>
                     <th>Description</th>
                     <th>Categories</th>
+                    <th>URL Handle</th>
                     <th>Is Public</th>
                     <th>Actions</th>
                 </tr>
@@ -24,6 +25,7 @@
                             <span class="ms-1 badge bg-primary">{{category.name}}</span>
                         </span>
                     </td>
+                    <td>{{blogPost.urlHandle}}</td>
                     <td>{{blogPost.isPublic}}</td>
                     <td>
                         <a class="btn btn-warning" [routerLink]="['/admin/blogposts/', blogPost.id]">Edit</a>

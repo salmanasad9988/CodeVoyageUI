@@ -116,6 +116,17 @@
                 </div>
     
                 <div class="mt-3">
+                    <label for="urlHandle" class="form-label">URL Handle</label>
+                    <input 
+                    type="text" 
+                    id="urlHandle" 
+                    name="urlHandle" 
+                    class="form-control"
+                    [(ngModel)]="blogPost.urlHandle"
+                    >
+                </div>
+
+                <div class="mt-3">
                     <label for="categories" class="form-label">Categories</label>
                     <ng-container *ngIf="categories$ | async as categories">
                         <select class="form-control" [(ngModel)]="selectedCategories" name="categories" id="categories" multiple>

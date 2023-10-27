@@ -32,6 +32,7 @@ export class AddBlogpostComponent implements OnInit {
       author: '',
       isPublic: true,
       publishedDate: new Date(),
+      urlHandle: '',
       categoryIds: []
     }
   }
